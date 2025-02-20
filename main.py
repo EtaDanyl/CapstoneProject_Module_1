@@ -23,13 +23,18 @@ def run_tracker(tracker_data):
     action = 0
     while action != 5:
         action = ui_handler.menu(action)
-        print(action)
         ACTIONS[action](tracker_data)
 
     ui_handler.farewell()
 
-def add_transaction():
-    pass
+def add_transaction(tracker_data):
+    new_transaction_data = ui_handler.transaction_data()
+    try:
+        new_transaction = Transaction(**new_transaction_data)
+    except:
+        return
+    else:
+        tracker_data.transactions.append(new_transaction)
 
 def edit_transaction():
     pass
@@ -44,7 +49,8 @@ def generate_report():
     pass
 
 def exit_program(tracker_data):
-    file_handler.save_data(tracker_data)
+    #file_handler.save_data(tracker_data)
+    pass
 
 if __name__ == "__main__":
     main()
