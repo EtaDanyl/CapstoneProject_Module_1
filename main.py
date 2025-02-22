@@ -3,6 +3,25 @@ from finance_tracker_class import FinanceTrackerData
 import file_handler
 import ui_handler
 
+MAIN_MENU = [
+    "Add Transaction",
+    "Edit Transaction",
+    "All Transactions",
+    "Statistics",
+    "Generate a Report",
+    "Exit",
+    ]
+
+EDITING_MENU = [
+    "Amount",
+    "Type",
+    "Category",
+    "Date",
+    "Delete transaction",
+    "Exit",
+    ]
+
+
 def main():
     data = file_handler.load_data()
     tracker_data = FinanceTrackerData(data)
@@ -22,7 +41,7 @@ def run_tracker(tracker_data):
 
     action = 0
     while action != 5:
-        action = ui_handler.menu(action)
+        action = ui_handler.menu(action, MAIN_MENU)
         ACTIONS[action](tracker_data)
 
     ui_handler.farewell()
@@ -37,7 +56,21 @@ def add_transaction(tracker_data):
         tracker_data.transactions.append(new_transaction)
 
 def edit_transaction(tracker_data):
-    pass
+    global EDITING_MENU
+    starting_pointer_position = 0
+    position = ui_handler.menu(starting_pointer_position, tracker_data.transactions)
+    transaction_to_edit = tracker_data.transactions[position]
+    edited_transaction = ui_handler.edit_transaction(transaction_to_edit, EDITING_MENU)
+    if edited_transaction is None:
+        tracker_data.transactions.pop(position)
+    else:
+        tracker_data.transactions[position] = edited_transaction
+
+    print(f"Old: {transaction_to_edit}")
+    print(f"New: {edited_transaction}")
+
+    input()
+
 
 def all_transactions(tracker_data):
     ui_handler.print_all_transactions(tracker_data.transactions)

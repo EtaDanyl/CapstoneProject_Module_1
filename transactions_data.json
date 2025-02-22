@@ -5,12 +5,5 @@
         "category": "Work",
         "date": "2001-01-01",
         "transaction_id": "c380fcc0-a68d-4817-be77-0c960aafdc7e"
-    },
-    {
-        "amount": 50.0,
-        "transaction_type": "expense",
-        "category": "Food",
-        "date": "2001-01-01",
-        "transaction_id": "d724270d-d52c-4b63-8a47-38d5c48e9421"
     }
 ]

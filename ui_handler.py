@@ -2,23 +2,14 @@ import keyboard
 import uuid
 from datetime import datetime
 
-options = [
-    "Add Transaction",
-    "Edit Transaction",
-    "All Transactions",
-    "Statistics",
-    "Generate a Report",
-    "Exit",
-    ]
-
-def print_menu(pointer_position):
+def print_menu(pointer_position, options):
     for i, option in enumerate(options):
         prefix = "> " if i == pointer_position else "  "
-        print(prefix + option)
+        print(prefix, option)
     print("\nUse ↑ ↓ to navigate. Enter to select.\n")
 
-def menu(pointer_position):
-    print_menu(pointer_position)
+def menu(pointer_position, options):
+    print_menu(pointer_position, options)
     while True:
         key_event = keyboard.read_event(suppress=True)
 
@@ -28,7 +19,7 @@ def menu(pointer_position):
             elif key_event.name == "down":
                 pointer_position = (pointer_position + 1) % len(options)
             print("\033c", end="")
-            print_menu(pointer_position)
+            print_menu(pointer_position, options)
         elif key_event.event_type == keyboard.KEY_DOWN:
             if key_event.name == "enter":
                 return pointer_position
@@ -131,3 +122,41 @@ def print_statistics(tracker_data):
 
     input("Press 'Enter' to go back.")
     return
+
+def edit_transaction(transaction_to_edit, editing_menu):
+    action = 0
+    while action != 5:
+        action = menu(action, editing_menu)
+
+        match action:
+            case 0: 
+                temp_amount = get_amount()
+                if temp_amount is None:
+                    continue
+                else:
+                    transaction_to_edit.amount = temp_amount
+            case 1: 
+                temp_type = get_type()
+                if temp_type is None:
+                    continue
+                else:
+                    transaction_to_edit.transaction_type = temp_type
+            case 2: 
+                temp_category = get_category()
+                if temp_category is None:
+                    continue
+                else:
+                    transaction_to_edit.category = temp_category
+            case 3: 
+                temp_date = get_date()
+                if temp_date is None:
+                    continue
+                else:
+                    transaction_to_edit.date = temp_date
+            case 4: 
+                transaction_to_edit = None
+                break
+
+    return transaction_to_edit
+
+    
