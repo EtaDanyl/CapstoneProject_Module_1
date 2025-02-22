@@ -15,7 +15,7 @@ def print_menu(pointer_position):
     for i, option in enumerate(options):
         prefix = "> " if i == pointer_position else "  "
         print(prefix + option)
-    print("\nUse ↑ ↓ to navigate. Enter to select.")
+    print("\nUse ↑ ↓ to navigate. Enter to select.\n")
 
 def menu(pointer_position):
     print_menu(pointer_position)
@@ -123,6 +123,11 @@ def print_all_transactions(transactions):
     else:
         print("No transactions.")
 
-    input("Press 'Enter' to go back.")
+    input("\nPress 'Enter' to go back.")
     return
 
+def print_statistics(tracker_data):
+    print(tracker_data)
+
+    input("Press 'Enter' to go back.")
+    return

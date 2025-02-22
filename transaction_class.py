@@ -56,12 +56,3 @@ class Transaction:
     def __str__(self):
         return f"Transaction(ID: {self.transaction_id}, Amount: {self.amount}, Type: {self.transaction_type}, Category: {self.category}, Date: {self.date})"
 
-    def to_dict(self):
-        """ Convert the transaction to a dictionary for easier file storage. """
-        return {
-            "transaction_id": self.transaction_id,
-            "amount": self.amount,
-            "transaction_type": self.transaction_type,
-            "category": self.category,
-            "date": self.date
-        }

@@ -43,14 +43,13 @@ def all_transactions(tracker_data):
     ui_handler.print_all_transactions(tracker_data.transactions)
 
 def statistics(tracker_data):
-    pass
+    ui_handler.print_statistics(tracker_data)
 
 def generate_report(tracker_data):
     pass
 
 def exit_program(tracker_data):
-    #file_handler.save_data(tracker_data)
-    pass
+    file_handler.save_data(tracker_data.transactions)
 
 if __name__ == "__main__":
     main()
