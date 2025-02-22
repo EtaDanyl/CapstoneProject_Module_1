@@ -12,10 +12,10 @@ class Transaction:
         :param transaction_id: Unique identifier (default: generated UUID if not provided).
         """
         self._amount = amount
-        self._transaction_type = transaction_type.lower()
+        self._transaction_type = transaction_type
         self._category = category
-        self._date = date if date else datetime.now().strftime("%Y-%m-%d")
-        self._transaction_id = transaction_id if transaction_id else str(uuid.uuid4())
+        self._date = date 
+        self._transaction_id = transaction_id 
 
     @property
     def amount(self):

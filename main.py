@@ -36,16 +36,16 @@ def add_transaction(tracker_data):
     else:
         tracker_data.transactions.append(new_transaction)
 
-def edit_transaction():
+def edit_transaction(tracker_data):
     pass
 
-def all_transactions():
+def all_transactions(tracker_data):
+    ui_handler.print_all_transactions(tracker_data.transactions)
+
+def statistics(tracker_data):
     pass
 
-def statistics():
-    pass
-
-def generate_report():
+def generate_report(tracker_data):
     pass
 
 def exit_program(tracker_data):
