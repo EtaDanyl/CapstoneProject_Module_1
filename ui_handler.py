@@ -117,12 +117,14 @@ def print_all_transactions(transactions, filtering_sorting_menu):
         else:
             print("No transactions.")
 
-        user_input = input("\nChoose by inputing: 'Sort', 'Filter', 'Back': ").strip().lower()
+        user_input = input("\nChoose by inputing: 'Sort', 'Filter', 'Refresh', 'Back': ").strip().lower()
         match user_input:
             case "sort": 
                 temp_transactions = sort_transactions(temp_transactions, filtering_sorting_menu)
             case "filter": 
                 temp_transactions = filter_transactions(temp_transactions, filtering_sorting_menu)
+            case "refresh": 
+                temp_transactions = transactions
             case "back":
                 break
             case _:
@@ -133,7 +135,7 @@ def sort_transactions(temp_transactions, filtering_sorting_menu):
 
     action = 0
     action = menu(action, filtering_sorting_menu)
-    
+
     if action != 4:
         temp_transactions = quick_sort(temp_transactions, sort_keys[action])
 
@@ -148,9 +150,68 @@ def quick_sort(transactions, key):
     right = [t for t in transactions if getattr(t, key) > getattr(pivot, key)]
     return quick_sort(left, key) + middle + quick_sort(right, key)
 
-def filter_transactions():
-    return
+def filter_transactions(temp_transactions, filtering_sorting_menu):
+    filter_options = {0: filter_by_amount, 1: filter_by_type, 2: filter_by_category, 3: filter_by_date}
 
+    action = 0
+    action = menu(action, filtering_sorting_menu)
+
+    if action != 4:
+        temp_transactions = filter_options[action](temp_transactions)
+
+    return temp_transactions
+
+def filter_by_amount(temp_transactions):
+    print("Define a minimum amount:")
+    min = get_amount()
+    if min is None :
+        return temp_transactions
+    
+    print("Define a maximum amount:")
+    max = get_amount()
+    if  max is None:
+        return temp_transactions
+
+    if min > max:
+        temp_min = min
+        min = max
+        max = temp_min
+
+    return [t for t in temp_transactions if min <= t.amount <= max]
+
+         
+def filter_by_type(temp_transactions):
+    income_or_expense = get_type()
+    if income_or_expense is None :
+        return temp_transactions
+    
+    return [t for t in temp_transactions if t.transaction_type == income_or_expense]
+
+def filter_by_category(temp_transactions):
+    category = get_category()
+    if category is None :
+        return temp_transactions
+    
+    return [t for t in temp_transactions if t.category == category]
+
+def filter_by_date(temp_transactions):
+    print("From:")
+    start_date = get_date()
+    if start_date is None :
+        return temp_transactions
+    
+    print("Until:")
+    end_date = get_date()
+    if  end_date is None:
+        return temp_transactions
+
+    if start_date > end_date:
+        temp_start_date = start_date
+        start_date = end_date
+        end_date = temp_start_date
+
+    return [t for t in temp_transactions if start_date <= t.date <= end_date]
+    
 def print_statistics(tracker_data):
     print("\033c", end="")
     print(tracker_data)
