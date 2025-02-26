@@ -18,8 +18,17 @@ EDITING_MENU = [
     "Category",
     "Date",
     "Delete transaction",
-    "Exit",
+    "Back",
     ]
+
+FILTERING_SORTING_MENU = [
+    "Amount",
+    "Type",
+    "Category",
+    "Date",
+    "Back",
+]
+
 
 
 def main():
@@ -73,10 +82,11 @@ def edit_transaction(tracker_data):
 
 
 def all_transactions(tracker_data):
-    ui_handler.print_all_transactions(tracker_data.transactions)
+    ui_handler.print_all_transactions(tracker_data.transactions, FILTERING_SORTING_MENU)
 
 def statistics(tracker_data):
     ui_handler.print_statistics(tracker_data)
+
 
 def generate_report(tracker_data):
     pass

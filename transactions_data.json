@@ -5,5 +5,19 @@
         "category": "Work",
         "date": "2001-01-01",
         "transaction_id": "c380fcc0-a68d-4817-be77-0c960aafdc7e"
+    },
+    {
+        "amount": 300.0,
+        "transaction_type": "income",
+        "category": "Side hustle",
+        "date": "2010-04-30",
+        "transaction_id": "3c8863e0-e4fe-4496-8934-dc81436dacd8"
+    },
+    {
+        "amount": 30.0,
+        "transaction_type": "expense",
+        "category": "Movie",
+        "date": "2025-01-01",
+        "transaction_id": "94e3c15f-bc29-4819-b0af-e260ea5e32cd"
     }
 ]

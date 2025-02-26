@@ -108,16 +108,51 @@ def get_date():
 def get_transaction_id():
     return str(uuid.uuid4())
 
-def print_all_transactions(transactions):
-    if len(transactions) > 0:
-        [print(tr) for tr in transactions]
-    else:
-        print("No transactions.")
+def print_all_transactions(transactions, filtering_sorting_menu):
+    temp_transactions = transactions
+    while True:
+        print("\033c", end="")
+        if len(temp_transactions) > 0:
+            [print(tr) for tr in temp_transactions]
+        else:
+            print("No transactions.")
 
-    input("\nPress 'Enter' to go back.")
+        user_input = input("\nChoose by inputing: 'Sort', 'Filter', 'Back': ").strip().lower()
+        match user_input:
+            case "sort": 
+                temp_transactions = sort_transactions(temp_transactions, filtering_sorting_menu)
+            case "filter": 
+                temp_transactions = filter_transactions(temp_transactions, filtering_sorting_menu)
+            case "back":
+                break
+            case _:
+                print("Wrong input. Try again.")
+
+def sort_transactions(temp_transactions, filtering_sorting_menu):
+    sort_keys = {0: "amount", 1: "transaction_type", 2: "category", 3: "date"}
+
+    action = 0
+    action = menu(action, filtering_sorting_menu)
+    
+    if action != 4:
+        temp_transactions = quick_sort(temp_transactions, sort_keys[action])
+
+    return temp_transactions
+
+def quick_sort(transactions, key):
+    if len(transactions) <= 1:
+        return transactions
+    pivot = transactions[len(transactions) // 2]
+    left = [t for t in transactions if getattr(t, key) < getattr(pivot, key)]
+    middle = [t for t in transactions if getattr(t, key) == getattr(pivot, key)]
+    right = [t for t in transactions if getattr(t, key) > getattr(pivot, key)]
+    return quick_sort(left, key) + middle + quick_sort(right, key)
+
+def filter_transactions():
     return
 
 def print_statistics(tracker_data):
+    print("\033c", end="")
     print(tracker_data)
 
     input("Press 'Enter' to go back.")
