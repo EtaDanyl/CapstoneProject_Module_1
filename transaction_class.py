@@ -1,4 +1,3 @@
-import uuid
 from datetime import datetime
 
 class Transaction:
@@ -52,6 +51,9 @@ class Transaction:
     @property
     def transaction_id(self):
         return self._transaction_id
+    
+    def to_list(self):
+        return [self._transaction_id, self._amount,  self._transaction_type, self._category, str(self._date)]
 
     def __str__(self):
         return f"Transaction(ID: {self.transaction_id}, Amount: {self.amount}, Type: {self.transaction_type}, Category: {self.category}, Date: {self.date})"

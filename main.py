@@ -2,6 +2,7 @@ from transaction_class import Transaction
 from finance_tracker_class import FinanceTrackerData
 import file_handler
 import ui_handler
+import docs_api_handler
 
 MAIN_MENU = [
     "Add Transaction",
@@ -87,9 +88,8 @@ def all_transactions(tracker_data):
 def statistics(tracker_data):
     ui_handler.print_statistics(tracker_data)
 
-
 def generate_report(tracker_data):
-    pass
+    docs_api_handler.call_api(tracker_data.transactions)
 
 def exit_program(tracker_data):
     file_handler.save_data(tracker_data.transactions)

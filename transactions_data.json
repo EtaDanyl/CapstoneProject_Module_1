@@ -14,10 +14,24 @@
         "transaction_id": "3c8863e0-e4fe-4496-8934-dc81436dacd8"
     },
     {
-        "amount": 30.0,
+        "amount": -30.0,
         "transaction_type": "expense",
-        "category": "Movie",
+        "category": "Food",
         "date": "2025-01-01",
-        "transaction_id": "94e3c15f-bc29-4819-b0af-e260ea5e32cd"
+        "transaction_id": "c3f9f40e-cba8-4c81-94e7-21b07780e1fc"
+    },
+    {
+        "amount": -45.0,
+        "transaction_type": "expense",
+        "category": "Barber",
+        "date": "2025-01-03",
+        "transaction_id": "7e32dbc6-c007-4423-9ad4-c0b3f83752b3"
+    },
+    {
+        "amount": 1000.0,
+        "transaction_type": "income",
+        "category": "Salary",
+        "date": "2025-02-03",
+        "transaction_id": "55bdbda4-e51c-4913-aef4-31295f43f843"
     }
 ]

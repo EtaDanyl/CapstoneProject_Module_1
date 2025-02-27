@@ -24,7 +24,6 @@ def menu(pointer_position, options):
             if key_event.name == "enter":
                 return pointer_position
 
-
 def greet():
     print("Welcome! I am your Personal Finance Tracker & Budget Assistant")
 
@@ -39,6 +38,8 @@ def transaction_data():
     temp_type = get_type()
     if temp_type is None:
         return None
+    if temp_type == "expense":
+        temp_amount *= -1
     temp_category = get_category()
     if temp_category is None:
         return None
@@ -254,5 +255,3 @@ def edit_transaction(transaction_to_edit, editing_menu):
                 break
 
     return transaction_to_edit
-
-    
