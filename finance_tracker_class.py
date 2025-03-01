@@ -1,10 +1,5 @@
 from dataclasses import dataclass, field
 from transaction_class import Transaction
-"""
-@dataclass
-class FinanceTrackerData:
-    transactions: list[Transaction] = field(default_factory=list)
-"""
 
 @dataclass
 class FinanceTrackerData:
@@ -17,7 +12,7 @@ class FinanceTrackerData:
         return sum(t.amount for t in self.transactions if t.transaction_type == 'expense')
     
     def total_balance(self) -> float:
-        return self.total_income() - self.total_expenses()
+        return self.total_income() + self.total_expenses()
     
     def __str__(self) -> str:
         total_income = self.total_income()

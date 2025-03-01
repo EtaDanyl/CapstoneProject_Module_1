@@ -3,6 +3,7 @@ from finance_tracker_class import FinanceTrackerData
 import file_handler
 import ui_handler
 import docs_api_handler
+import webbrowser
 
 MAIN_MENU = [
     "Add Transaction",
@@ -76,10 +77,6 @@ def edit_transaction(tracker_data):
     else:
         tracker_data.transactions[position] = edited_transaction
 
-    print(f"Old: {transaction_to_edit}")
-    print(f"New: {edited_transaction}")
-
-    input()
 
 
 def all_transactions(tracker_data):
@@ -90,6 +87,7 @@ def statistics(tracker_data):
 
 def generate_report(tracker_data):
     docs_api_handler.call_api(tracker_data.transactions)
+    webbrowser.open("https://docs.google.com/spreadsheets/d/1uM4SfZ4xxMUEpN0DkTyAp4C4al1sZWtkacb46Zjcv7c/edit?usp=sharing")
 
 def exit_program(tracker_data):
     file_handler.save_data(tracker_data.transactions)

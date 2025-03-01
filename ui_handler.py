@@ -254,4 +254,5 @@ def edit_transaction(transaction_to_edit, editing_menu):
                 transaction_to_edit = None
                 break
 
+    input("Changes saved. Press 'Enter' to continue.")
     return transaction_to_edit
