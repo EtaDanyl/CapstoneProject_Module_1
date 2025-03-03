@@ -1,0 +1,58 @@
+[
+    {
+        "amount": 100.0,
+        "transaction_type": "income",
+        "category": "Side hustle",
+        "date": "2025-02-15",
+        "transaction_id": "18fb08bf-36b3-4dc1-98bc-122948c0bf4b"
+    },
+    {
+        "amount": 200.0,
+        "transaction_type": "income",
+        "category": "Birthday",
+        "date": "2025-03-02",
+        "transaction_id": "4852a915-4c97-4b9b-9147-b6362653a595"
+    },
+    {
+        "amount": -30.0,
+        "transaction_type": "expense",
+        "category": "Restourant",
+        "date": "2025-03-02",
+        "transaction_id": "ef03626e-6659-4147-80c9-8857a0c71f48"
+    },
+    {
+        "amount": 1000.0,
+        "transaction_type": "income",
+        "category": "Work",
+        "date": "2025-02-10",
+        "transaction_id": "51b84cc1-ad0c-4454-852b-e64aeda57ce7"
+    },
+    {
+        "amount": -500.0,
+        "transaction_type": "expense",
+        "category": "Tv",
+        "date": "2025-01-20",
+        "transaction_id": "5eed1fc5-3ff9-40ab-95ca-f4e583f2b928"
+    },
+    {
+        "amount": 300.0,
+        "transaction_type": "income",
+        "category": "Side hustle",
+        "date": "2025-01-29",
+        "transaction_id": "944d9090-c133-4497-9eb3-16b051285a73"
+    },
+    {
+        "amount": -400.0,
+        "transaction_type": "expense",
+        "category": "Rent",
+        "date": "2025-03-01",
+        "transaction_id": "2c07d007-f141-48dd-9e1c-a29bb510d258"
+    },
+    {
+        "amount": -50.0,
+        "transaction_type": "expense",
+        "category": "Groceries",
+        "date": "2025-03-03",
+        "transaction_id": "68ebab51-3a2f-475d-85c2-cd9b16b30ab7"
+    }
+]

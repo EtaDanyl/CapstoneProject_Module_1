@@ -3,35 +3,7 @@ from finance_tracker_class import FinanceTrackerData
 import file_handler
 import ui_handler
 import docs_api_handler
-import webbrowser
-
-MAIN_MENU = [
-    "Add Transaction",
-    "Edit Transaction",
-    "All Transactions",
-    "Statistics",
-    "Generate a Report",
-    "Exit",
-    ]
-
-EDITING_MENU = [
-    "Amount",
-    "Type",
-    "Category",
-    "Date",
-    "Delete transaction",
-    "Back",
-    ]
-
-FILTERING_SORTING_MENU = [
-    "Amount",
-    "Type",
-    "Category",
-    "Date",
-    "Back",
-]
-
-
+from menus import Menu
 
 def main():
     data = file_handler.load_data()
@@ -52,7 +24,7 @@ def run_tracker(tracker_data):
 
     action = 0
     while action != 5:
-        action = ui_handler.menu(action, MAIN_MENU)
+        action = ui_handler.menu(action, Menu.main)
         ACTIONS[action](tracker_data)
 
     ui_handler.farewell()
@@ -67,27 +39,24 @@ def add_transaction(tracker_data):
         tracker_data.transactions.append(new_transaction)
 
 def edit_transaction(tracker_data):
-    global EDITING_MENU
-    starting_pointer_position = 0
-    position = ui_handler.menu(starting_pointer_position, tracker_data.transactions)
-    transaction_to_edit = tracker_data.transactions[position]
-    edited_transaction = ui_handler.edit_transaction(transaction_to_edit, EDITING_MENU)
-    if edited_transaction is None:
+    data = ui_handler.choose_transaction_to_edit(tracker_data.transactions, Menu.editing)
+    edited_transaction = data[0]
+    position = data[1]
+    if position is None:
+        return
+    elif edited_transaction is None:
         tracker_data.transactions.pop(position)
     else:
         tracker_data.transactions[position] = edited_transaction
 
-
-
 def all_transactions(tracker_data):
-    ui_handler.print_all_transactions(tracker_data.transactions, FILTERING_SORTING_MENU)
+    ui_handler.print_all_transactions(tracker_data.transactions, Menu.filtering_sorting)
 
 def statistics(tracker_data):
     ui_handler.print_statistics(tracker_data)
 
 def generate_report(tracker_data):
     docs_api_handler.call_api(tracker_data.transactions)
-    webbrowser.open("https://docs.google.com/spreadsheets/d/1uM4SfZ4xxMUEpN0DkTyAp4C4al1sZWtkacb46Zjcv7c/edit?usp=sharing")
 
 def exit_program(tracker_data):
     file_handler.save_data(tracker_data.transactions)

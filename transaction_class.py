@@ -22,7 +22,10 @@ class Transaction:
 
     @amount.setter
     def amount(self, amount: float):
-        self._amount = amount
+        if self._transaction_type == "expense":
+            self._amount = amount * -1
+        else:
+            self._amount = amount
 
     @property
     def transaction_type(self):
@@ -31,6 +34,7 @@ class Transaction:
     @transaction_type.setter
     def transaction_type(self, transaction_type: str):
         self._transaction_type = transaction_type.lower()
+        self._amount = self._amount * -1
 
     @property
     def category(self):

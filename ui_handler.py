@@ -220,6 +220,22 @@ def print_statistics(tracker_data):
     input("Press 'Enter' to go back.")
     return
 
+def choose_transaction_to_edit(transactions, editing_menu):
+    print("\033c", end="")
+    if len(transactions) > 0:
+        [print(tr) for tr in transactions]
+    else:
+        print("No transactions.")
+        input("\nPress 'Enter' to go back.")
+        return (None, None)
+
+    starting_pointer_position = 0
+    position = menu(starting_pointer_position, transactions)
+    transaction_to_edit = transactions[position]
+    edited_transaction = edit_transaction(transaction_to_edit, editing_menu)
+    
+    return (edited_transaction, position)
+
 def edit_transaction(transaction_to_edit, editing_menu):
     action = 0
     while action != 5:
@@ -254,5 +270,4 @@ def edit_transaction(transaction_to_edit, editing_menu):
                 transaction_to_edit = None
                 break
 
-    input("Changes saved. Press 'Enter' to continue.")
     return transaction_to_edit

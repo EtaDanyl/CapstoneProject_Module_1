@@ -3,6 +3,27 @@ from transaction_class import Transaction
 
 @dataclass
 class FinanceTrackerData:
+    """
+    A class to manage and analyze financial transactions.
+    This class maintains a list of transactions and provides methods 
+    to calculate total income, total expenses, and the overall balance.
+
+    Attributes:
+        transactions (list[Transaction]): A list of Transaction objects representing financial records.
+    Methods:
+        total_income() -> float:
+            Calculates and returns the total income from all transactions.
+
+        total_expenses() -> float:
+            Calculates and returns the total expenses from all transactions.
+
+        total_balance() -> float:
+            Computes the net balance by adding total income and total expenses.
+
+        __str__() -> str:
+            Returns a formatted string summarizing income, expenses, 
+            balance, and savings rate.
+    """
     transactions: list[Transaction] = field(default_factory=list)
     
     def total_income(self) -> float:
