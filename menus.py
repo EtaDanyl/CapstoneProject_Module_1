@@ -5,9 +5,6 @@ from typing import ClassVar
 class Menu:
     """
     A class containing predefined menu options for a finance tracking application.
-    This class stores static menu options that are used for navigation 
-    within the application, including the main menu, editing menu, 
-    and filtering/sorting menu.
 
     Attributes:
         main (ClassVar[list[str]]): The main menu options.
