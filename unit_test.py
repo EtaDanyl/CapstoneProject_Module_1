@@ -34,3 +34,8 @@ def test_get_type_positive(monkeypatch):
 def test_get_type_negative(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda _: "Cancel")
     assert get_type() is None
+
+
+
+
+    
